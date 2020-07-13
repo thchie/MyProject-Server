@@ -26,8 +26,6 @@ mongoose
 
 // Gets All Movies
 router.get('/', (req, res) => {
-  console.log('In get all movie function');
-
   Movie.find({})
     .then(respond => {
       res.status(200).json(respond);
@@ -39,7 +37,6 @@ router.get('/', (req, res) => {
 
 // Create Movie
 router.post('/', (req, res) => {
-  console.log('In post movie function');
   const title = req.query.title;
 
   if (req.query.title === '') res.status(400).send('No title found.');
@@ -86,8 +83,6 @@ router.post('/', (req, res) => {
 
 // Delete Movie
 router.delete('/:id', (req, res) => {
-  console.log('In delete movie function2');
-
   Movie.deleteOne({ id: req.params.id })
     .then(response => {
       res.status(200).json(response);
