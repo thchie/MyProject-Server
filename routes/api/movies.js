@@ -38,7 +38,6 @@ router.get('/', (req, res) => {
 // Create Movie
 router.post('/', (req, res) => {
   const title = req.query.title;
-
   if (req.query.title === '') res.status(400).send('No title found.');
 
   axios
@@ -65,8 +64,8 @@ router.post('/', (req, res) => {
           });
           movie
             .save()
-            .then(() => {
-              res.status(200).json(respond);
+            .then(respondMovie => {
+              res.status(200).json(respondMovie);
             })
             .catch(error => {
               res.status(400).json(error);
